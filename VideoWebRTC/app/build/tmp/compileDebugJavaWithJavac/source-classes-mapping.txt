@@ -1,0 +1,15 @@
+com/myhexaville/androidwebrtc/databinding/ActivitySamplePeerConnectionBinding.java
+ com.myhexaville.androidwebrtc.databinding.ActivitySamplePeerConnectionBinding
+com/shivam/androidwebrtc/tutorial/CompleteActivity.java
+ com.shivam.androidwebrtc.tutorial.CompleteActivity
+ com.shivam.androidwebrtc.tutorial.CompleteActivity$1
+ com.shivam.androidwebrtc.tutorial.CompleteActivity$2
+ com.shivam.androidwebrtc.tutorial.CompleteActivity$3
+com/shivam/androidwebrtc/tutorial/SimpleSdpObserver.java
+ com.shivam.androidwebrtc.tutorial.SimpleSdpObserver
+com/myhexaville/androidwebrtc/DataBindingTriggerClass.java
+ com.myhexaville.androidwebrtc.DataBindingTriggerClass
+com/shivam/androidwebrtc/LauncherActivity.java
+ com.shivam.androidwebrtc.LauncherActivity
+com/myhexaville/androidwebrtc/BuildConfig.java
+ com.myhexaville.androidwebrtc.BuildConfig

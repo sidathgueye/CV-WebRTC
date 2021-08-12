@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/build/intermediates/res/merged/debug/drawable_call.xml.flat",
+        "source": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/src/main/res/drawable/call.xml"
+    },
+    {
+        "merged": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/build/intermediates/res/merged/debug/layout_activity_launch.xml.flat",
+        "source": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/src/main/res/layout/activity_launch.xml"
+    },
+    {
+        "merged": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/build/intermediates/res/merged/debug/drawable_disconnect.xml.flat",
+        "source": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/src/main/res/drawable/disconnect.xml"
+    },
+    {
+        "merged": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/build/intermediates/res/merged/debug/xml_preferences.xml.flat",
+        "source": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/src/main/res/xml/preferences.xml"
+    },
+    {
+        "merged": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/build/intermediates/res/merged/debug/layout_activity_sample_peer_connection.xml.flat",
+        "source": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/src/main/res/layout/activity_sample_peer_connection.xml"
+    },
+    {
+        "merged": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/home/gael/Desktop/AndroidWebRTC/VideoWebRTC/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    }
+]
