@@ -7,7 +7,7 @@ import socketio
 from aiortc import RTCIceCandidate, RTCPeerConnection, RTCSessionDescription, RTCIceServer, RTCConfiguration, \
     VideoStreamTrack, sdp
 from aiortc.contrib.media import MediaPlayer
-
+from aiortc.contrib.signaling import object_from_string
 
 STUN_SERVER = ("stun.l.google.com", 19302)
 SOCKET_URI = "https://api5.securemotion.fr:9000/"
@@ -17,7 +17,9 @@ room = 'foo'
 isChannelReady = False
 isInitiator = False
 isStarted = False
-pc = RTCPeerConnection()
+
+iceServers = RTCIceServer(urls='stun:stun.l.google.com:19302')
+pc = RTCPeerConnection(configuration=RTCConfiguration(iceServers=[iceServers]))
 
 
 class FlagVideoStreamTrack(VideoStreamTrack):
@@ -117,17 +119,26 @@ async def disconnect():
 
 @sio.event
 async def message(message):
+    messagestring = json.dumps(message)
+
     if message == 'got user media':
         pc.addTransceiver("video", direction="recvonly")
-        pc.addTransceiver("audio", direction="recvonly")
-        offer = await pc.createOffer()
-        await pc.setLocalDescription(offer)
-        print(offer.sdp + "\n")
-        mes_json = json.dumps({"type": offer.type, "sdp": pc.localDescription.sdp})
+        mes_json = json.dumps({"type": "offer", "sdp": pc.localDescription.sdp})
         json_obj = json.loads(mes_json)
         await sio.emit('message', json_obj)
-        await sio.wait()
-    print('mes : ' + str(message))
+    else:
+        messagedict = json.loads(messagestring)
+        print(messagedict)
+        if messagedict["type"] == "answer":
+            sdp = messagedict["sdp"]
+            await pc.setRemoteDescription(sdp)
+            if isinstance(sdp, RTCSessionDescription):
+                await pc.setRemoteDescription(sdp)
+                print("ssfdss")
+            elif isinstance(sdp, RTCIceCandidate):
+                await pc.addIceCandidate(sdp)
+                print("5464564")
+        print(pc.remoteDescription)
 
 # def maybeStart():
 #     print('maybeStart ' + str(isStarted) + ' ' + str(isChannelReady))
@@ -143,29 +154,30 @@ async def run(pc):
     if room != '':
         await sio.emit('create or join', room)
         print('Attempted to create or join room : ' + room)
-    player = MediaPlayer('/home/gael/Desktop/darknet_detection/Big_Buck_Bunny_1080_10s_1MB.mp4')
+
+    player = MediaPlayer('detection.avi')
     pc.addTrack(player.video)
-    #pc.addTrack(player.audio)
+    await pc.setLocalDescription(await pc.createOffer())
     await sio.wait()
 
 
-def createPeerConnection():
+async def doCall():
+    print("sending offer to peer")
+    offer = await pc.createOffer()
+    await pc.setLocalDescription(offer)
+    await sio.emit("message", offer)
 
-    @pc.on("connectionstatechange")
-    def connectionstatechange():
-        print("connectionState " + pc.connectionState)
 
-    @pc.on("iceconnectionstatechange")
-    def iceconnectionstatechange():
-        print("iceConnectionStat " + pc.iceConnectionState)
+async def doAnswer():
+    print("sending answer to peer")
+    answer = await pc.createAnswer()
 
-    @pc.on("icegatheringstatechange")
-    def icegatheringstatechange():
-        print("iceGatheringState " + pc.iceGatheringState)
 
-    @pc.on("signalingstatechange")
-    def signalingstatechange():
-        print("signalingstatechange " + pc.signalingState)
+@pc.on("iceconnectionstatechange")
+async def on_iceconnectionstatechange():
+    print(f'ICE connection state is {pc.iceConnectionState}')
+    if pc.iceConnectionState == "failed":
+        await pc.close()
 
 
 # async def main():
@@ -177,9 +189,6 @@ def createPeerConnection():
 
 
 if __name__ == '__main__':
-    iceServers = RTCIceServer(urls='stun:stun.l.google.com:19302')
-    pc = RTCPeerConnection(configuration=RTCConfiguration(iceServers=[iceServers]))
-
     loop = asyncio.get_event_loop()
     try:
         loop.run_until_complete(run(pc=pc))
