@@ -118,10 +118,10 @@ public class CompleteActivity extends AppCompatActivity {
 
     private void connectToSignallingServer() {
         try {
-            // For me this was "http://192.168.1.220:3000";
+            // For me this was "ip:port";
             // $ hostname -I
-            String URL = "https://api5.securemotion.fr:9000/";
-           // String URL = "hhttp://192.168.0.41:9000/";
+            String URL = "url1", port1;
+           // String URL = "url2", port2;
             Log.e(TAG, "REPLACE ME: IO Socket:" + URL);
             socket = IO.socket(URL);
 

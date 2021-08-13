@@ -9,9 +9,9 @@ from aiortc import RTCIceCandidate, RTCPeerConnection, RTCSessionDescription, RT
 from aiortc.contrib.media import MediaPlayer
 from aiortc.contrib.signaling import object_from_string
 
-STUN_SERVER = ("stun.l.google.com", 19302)
-SOCKET_URI = "https://api5.securemotion.fr:9000/"
-#SOCKET_URI = "http://192.168.0.41:9000/"
+STUN_SERVER = ("url1", port1)
+SOCKET_URI = ""url2", port2"
+
 sio = socketio.AsyncClient()
 room = 'foo'
 isChannelReady = False
