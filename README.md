@@ -7,7 +7,9 @@ This Java client manages to connect and send the video stream from his camera.
 
 The other client which is written in python, it manages to connect but does not send a video stream.
 the error opposite is returned:
-<<
+
+
+```
  Traceback (most recent call last):
   File "/home/gael/.local/lib/python3.9/site-packages/socketio/asyncio_client.py", line 465, in _handle_eio_message
     await self._handle_event (pkt.namespace, pkt.id, pkt.data)
@@ -20,7 +22,9 @@ the error opposite is returned:
   File "/home/gael/.local/lib/python3.9/site-packages/aiortc/rtcpeerconnection.py", line 799, in setRemoteDescription
     description = sdp.SessionDescription.parse (sessionDescription.sdp)
 AttributeError: 'str' object has no attribute 'sdp'
->>
+
+
+```
 
 NB: The connection is well established and data is exchanged, we just can't see the videos.
 
