@@ -9,6 +9,7 @@ from aiortc import RTCIceCandidate, RTCPeerConnection, RTCSessionDescription, RT
 from aiortc.contrib.media import MediaPlayer
 from aiortc.contrib.signaling import object_from_string
 
+#Add url before testing code 
 STUN_SERVER = ("url1", port1)
 SOCKET_URI = ""url2", port2"
 
